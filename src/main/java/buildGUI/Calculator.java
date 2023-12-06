@@ -17,6 +17,7 @@ public class Calculator extends javax.swing.JFrame {
     String operation;
 
 
+    
     /**
      * Creates new form Calculator
      */
@@ -369,8 +370,9 @@ public class Calculator extends javax.swing.JFrame {
     }//GEN-LAST:event_jTxtDisplayActionPerformed
 
     private void jBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn1ActionPerformed
-        String newNumber = jTxtDisplay.getText() + jBtn1.getText();
-        jTxtDisplay.setText(newNumber);
+  
+            String newNumber = jTxtDisplay.getText() + jBtn1.getText();
+               jTxtDisplay.setText(newNumber);
 
     }//GEN-LAST:event_jBtn1ActionPerformed
 
@@ -442,34 +444,41 @@ public class Calculator extends javax.swing.JFrame {
 
     private void jBtnResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnResultActionPerformed
 
+  try {
         String answer;
         secondNum = Double.parseDouble(jTxtDisplay.getText());
 
         if (null != operation)
-        switch (operation) {
-            case "*":
-                result = firstNum * secondNum;
-                answer = String.format("%.0f", result);
-                jTxtDisplay.setText(answer);
-                break;
-            case "/":
-                if( secondNum ==0){ result = 0; }
-                    else { result = firstNum / secondNum;
-                           answer = String.format("%.0f", result);
-                           jTxtDisplay.setText(answer);
+            switch (operation) {
+                case "*":
+                    result = firstNum * secondNum;
+                    answer = String.format("%.0f", result);
+                    jTxtDisplay.setText(answer);
+                    break;
+                case "/":
+                    if (secondNum == 0) {
+                        result = 0;
+                    } else {
+                        result = firstNum / secondNum;
+                        answer = String.format("%.0f", result);
+                        jTxtDisplay.setText(answer);
                     }
-                break;
-            case "+":
-                result = firstNum + secondNum;
-                answer = String.format("%.0f", result);
-                jTxtDisplay.setText(answer);
-                break;
-            case "-":
-                result = firstNum - secondNum;
-                answer = String.format("%.0f", result);
-                jTxtDisplay.setText(answer);
-                break;
-
+                    break;
+                case "+":
+                    result = firstNum + secondNum;
+                    answer = String.format("%.0f", result);
+                    jTxtDisplay.setText(answer);
+                    break;
+                case "-":
+                    result = firstNum - secondNum;
+                    answer = String.format("%.0f", result);
+                    jTxtDisplay.setText(answer);
+                    break;
+                  }
+             } catch (NumberFormatException e) {
+                  jTxtDisplay.setText("Error");
+              
+                    
 //        if ("*".equals(operation))
 //        {
 //            result = firstNum * secondNum;
